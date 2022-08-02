@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    document.write(`<h1>proyecto final</h1>`)
+    document.write(`<input id = "nombre" type="text">`)
+
+    let input1 = document.getElementById("nombre")
+    input1.addEventListener("input", () =>{
+
+        console.log(input1.value)
+    })
+
 
 const productos = [
       {id:1, nombre:'horno',precio: 400, stock: 16},
@@ -90,3 +99,5 @@ console.log(detalledelcarrito());
 
 
 });
+
+
