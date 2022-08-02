@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 
 const productos = [
       {id:1, nombre:'horno',precio: 400, stock: 16},
@@ -19,17 +21,26 @@ function agregarAlcarrito( id ){
 }
 
 function componenteProductos() {
-     productos.forEach( p => {
-         document.write(`<li>${p.nombre}<li>`)
-         document.write(`<li>${p.precio}<li>`)
-         document.write(`<li>${p.stock}<li>`)
-         document.write(`<button>agregar al carrito</button>`)   
+    productos.forEach( p => {
+      document.write(`<li>${p.nombre}<li>`)
+      document.write(`<li>${p.precio}<li>`)
+      document.write(`<li>${p.stock}<li>`) 
+      document.write(`<button onClick="alert(añadido al carrito)">añadir al carro de compras</button>`)
+       
+    
+         
         
-        
-        })
-
-
+    })
 }
+
+function añadirProductoAlcarrito(evento){
+    carrito.push(evento.target.getattribute("marcador"))
+    renderizarcarrito();
+    guardarcarritoenlocalstorage();
+}
+
+
+
 
 function imprimirCarrito() {
     carrito.forEach(p => {
@@ -38,5 +49,43 @@ function imprimirCarrito() {
 
 }
 
+function detalledelproducto(id) {
+    return productos.find( p => p.id == id)
+    
+}
+
+function detalledelcarrito(){
+     let productos = []
+     carrito.forEach( p => {
+        productos.push(detalledelproducto( p.id ))
+     })
+     return productos
+
+}
+
+function calculartotal(){
+    let total = 0
+    carrito.forEach( p => {
+        total += p.precio
+    })
+    return total
+
+}
+
 componenteProductos()
+
+
 agregarAlcarrito(2)
+imprimirCarrito()
+
+agregarAlcarrito(4)
+imprimirCarrito()
+
+console.log(detalledelproducto(4) );
+
+console.log(detalledelcarrito());
+
+
+
+
+});
