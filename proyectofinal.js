@@ -25,8 +25,9 @@ function componenteProductos() {
       document.write(`<li>${p.nombre}<li>`)
       document.write(`<li>${p.precio}<li>`)
       document.write(`<li>${p.stock}<li>`) 
-      document.write(`<button onClick="alert(añadido al carrito)">añadir al carro de compras</button>`)
-       
+      document.write(`<button>añadir al carro de compras</button>`)
+      
+      
     
          
         
