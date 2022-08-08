@@ -21,6 +21,11 @@ const productos = [
       
 ]
 
+const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)};
+
+ guardarLocal("listaProductos",JSON.stringify(productos))
+
+
 const carrito = []
 
 function agregarAlcarrito( id ){
@@ -81,6 +86,25 @@ function calculartotal(){
     return total
 
 }
+
+class producto {
+    constructor(obj){
+        this.nombre = obj.producto.toUpperCase();
+        this.precio = parseFloat(obj.precio);
+    }
+    sumaIva(){
+        this.precio = this.precio * 1.21;
+    }
+}
+
+const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
+
+for (const objeto of almacenados)
+     productos.push(new producto(objeto));
+
+for (const producto of productos)
+ producto,sumaIva();
+
 
 componenteProductos()
 
