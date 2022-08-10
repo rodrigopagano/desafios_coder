@@ -64,10 +64,22 @@ function agregarAlcarrito( id ){
 
  function componenteProductos() {
     productos.forEach( p => {
-     document.write(`<li>${p.nombre}<li>`)
-     document.write(`<li>${p.precio}<li>`)
-     document.write(`<li>${p.stock}<li>`) 
-     document.write(`<button>añadir al carro de compras</button>`)
+     const divproducto = document.createElement("div")
+     divproducto.innerHTML = `
+     <h3>${p.nombre}</h3>
+     <p>${p.precio}</p>
+     <p>${p.stock}</p>
+
+     `
+     const botonAgregarAlCarrito = document.createElement("button")
+     botonAgregarAlCarrito.innerText = "añadir al carro de compras"
+     botonAgregarAlCarrito.addEventListener("click" , () => agregarAlcarrito(p.id))
+
+
+     divproducto.appendChild(botonAgregarAlCarrito)
+
+     document.body.appendChild(divproducto)
+     
      
       
 
