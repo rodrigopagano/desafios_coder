@@ -1,13 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     document.write(`<h1>proyecto final</h1>`)
+    document.write(`<p>ingrese su nombre de usuario<p>`)
     document.write(`<input id = "nombre" type="text">`)
+    document.write(`<p>ingrese su contraseña<p>`)
+    document.write(`<input id = "contraseña" type="text">`)
 
     let input1 = document.getElementById("nombre")
     input1.addEventListener("input", () =>{
 
         console.log(input1.value)
     })
+
+    let input2 = document.getElementById("contraseña")
+    input2.addEventListener("input", () =>{
+
+        console.log(input2.value)
+    } )
 
 
 const productos = [
@@ -20,13 +29,32 @@ const productos = [
 
       
 ]
+ 
+   const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor)}
+    
+   for (const producto of productos) {
+    guardarLocal("listaproductos", JSON.stringify(productos));
 
-const guardarLocal = (clave, valor) => {localStorage.setItem(clave, valor)};
+   }
 
- guardarLocal("listaProductos",JSON.stringify(productos))
+   
 
+ function componenteProductos() {
+    productos.forEach( p => {
+     document.write(`<li>${p.nombre}<li>`)
+     document.write(`<li>${p.precio}<li>`)
+     document.write(`<li>${p.stock}<li>`) 
+     document.write(`<button>añadir al carro de compras</button>`)
+     
+      
 
-const carrito = []
+    
+         
+        
+    })
+}
+
+ const carrito = []
 
 function agregarAlcarrito( id ){
 
@@ -34,14 +62,15 @@ function agregarAlcarrito( id ){
    carrito.push( {id: producto.id, nombre: producto.nombre } )
 }
 
-function componenteProductos() {
+ function componenteProductos() {
     productos.forEach( p => {
-      document.write(`<li>${p.nombre}<li>`)
-      document.write(`<li>${p.precio}<li>`)
-      document.write(`<li>${p.stock}<li>`) 
-      document.write(`<button>añadir al carro de compras</button>`)
+     document.write(`<li>${p.nombre}<li>`)
+     document.write(`<li>${p.precio}<li>`)
+     document.write(`<li>${p.stock}<li>`) 
+     document.write(`<button>añadir al carro de compras</button>`)
+     
       
-      
+
     
          
         
@@ -96,14 +125,6 @@ class producto {
         this.precio = this.precio * 1.21;
     }
 }
-
-const almacenados = JSON.parse(localStorage.getItem("listaProductos"));
-
-for (const objeto of almacenados)
-     productos.push(new producto(objeto));
-
-for (const producto of productos)
- producto,sumaIva();
 
 
 componenteProductos()
