@@ -136,6 +136,8 @@ class producto {
     }
 }
 
+const todoslosproductos = [...productos]
+
 
 componenteProductos()
 
@@ -150,7 +152,7 @@ console.log(detalledelproducto(4) );
 
 console.log(detalledelcarrito());
 
-
+console.log(todoslosproductos)
 
 
 });
