@@ -138,6 +138,21 @@ class producto {
 
 const todoslosproductos = [...productos]
 
+Toastify({
+    text: "This is a toast",
+    duration: 5000,
+    destination: "https://github.com/rodrigopagano/desafios_coder.git",
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "left", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #800000, #008000)",
+    },
+    onClick: function(){} // Callback after click
+  }).showToast();
+
 
 componenteProductos()
 
