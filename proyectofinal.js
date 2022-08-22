@@ -153,6 +153,21 @@ Toastify({
     onClick: function(){} // Callback after click
   }).showToast();
 
+function renderData(products ){
+    products.forEach(p => {
+        const product = document.createElement('li')
+        product.innerText = p.nombre
+        ShadowRoot.append(product)
+    
+    });
+}
+
+fetch('/data/products.json')
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+})
+
 
 componenteProductos()
 
