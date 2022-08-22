@@ -153,20 +153,15 @@ Toastify({
     onClick: function(){} // Callback after click
   }).showToast();
 
-function renderData(products ){
-    products.forEach(p => {
-        const product = document.createElement('li')
-        product.innerText = p.nombre
-        ShadowRoot.append(product)
-    
-    });
-}
+  fetch('https://jsonplaceholder.typicode.com/users')
+   .then((resp) => resp.json())
+   .then( (data) => { 
+    console.log( data[2] )
+    console.log( data[5] )
+    console.log( data[7] )
+   })
+   
 
-fetch('/data/products.json')
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-})
 
 
 componenteProductos()
